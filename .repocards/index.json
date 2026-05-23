@@ -1,0 +1,64 @@
+{
+  "nextConfig": [
+    {
+      "file": "next.config.mjs",
+      "line": 2,
+      "kind": "const",
+      "exported": false
+    }
+  ],
+  "config": [
+    {
+      "file": "postcss.config.mjs",
+      "line": 2,
+      "kind": "const",
+      "exported": false
+    },
+    {
+      "file": "tailwind.config.ts",
+      "line": 3,
+      "kind": "const",
+      "exported": false
+    }
+  ],
+  "geistSans": [
+    {
+      "file": "src/app/layout.tsx",
+      "line": 5,
+      "kind": "const",
+      "exported": false
+    }
+  ],
+  "geistMono": [
+    {
+      "file": "src/app/layout.tsx",
+      "line": 10,
+      "kind": "const",
+      "exported": false
+    }
+  ],
+  "metadata": [
+    {
+      "file": "src/app/layout.tsx",
+      "line": 16,
+      "kind": "const",
+      "exported": true
+    }
+  ],
+  "RootLayout": [
+    {
+      "file": "src/app/layout.tsx",
+      "line": 21,
+      "kind": "function",
+      "exported": true
+    }
+  ],
+  "Home": [
+    {
+      "file": "src/app/page.tsx",
+      "line": 3,
+      "kind": "function",
+      "exported": true
+    }
+  ]
+}

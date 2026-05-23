@@ -1,0 +1,355 @@
+{
+  "version": 1,
+  "generated_at": "2026-05-01T10:30:07.848Z",
+  "stats": {
+    "files": 18,
+    "symbols": 8,
+    "imports": 7,
+    "durationMs": 80
+  },
+  "files": {
+    "README.md": {
+      "path": "README.md",
+      "lang": "md",
+      "loc": 37,
+      "hash": "60b55ff7df79af72590f9524208e46642bc32bdc175cdad41349681c0e2f958f",
+      "symbols": [],
+      "imports": [],
+      "title": "or",
+      "summary": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app)."
+    },
+    "next.config.mjs": {
+      "path": "next.config.mjs",
+      "lang": "js",
+      "loc": 5,
+      "hash": "1e3206cb200e264fdddb4dbb2e4772daebc839fdbc94b78316d74892a0de6fa2",
+      "symbols": [
+        {
+          "id": "next.config.mjs#const:nextConfig:2",
+          "name": "nextConfig",
+          "kind": "const",
+          "file": "next.config.mjs",
+          "line": 2,
+          "col": 7,
+          "exported": false
+        }
+      ],
+      "imports": []
+    },
+    "postcss.config.mjs": {
+      "path": "postcss.config.mjs",
+      "lang": "js",
+      "loc": 9,
+      "hash": "ac31e2a95ef64fe27ceb4124e101675273107aae2e33bc490b01d919e7f03646",
+      "symbols": [
+        {
+          "id": "postcss.config.mjs#const:config:2",
+          "name": "config",
+          "kind": "const",
+          "file": "postcss.config.mjs",
+          "line": 2,
+          "col": 7,
+          "exported": false
+        }
+      ],
+      "imports": []
+    },
+    "prisma.config.ts": {
+      "path": "prisma.config.ts",
+      "lang": "ts",
+      "loc": 15,
+      "hash": "c1bcbd0ff267c8b6885cd467ed8122cf6508bdac6c929d69f9b512ccde65a033",
+      "symbols": [],
+      "imports": [
+        {
+          "from": "prisma.config.ts",
+          "source": "dotenv/config",
+          "names": [],
+          "line": 3
+        },
+        {
+          "from": "prisma.config.ts",
+          "source": "prisma/config",
+          "names": [
+            "defineConfig"
+          ],
+          "line": 4
+        }
+      ]
+    },
+    "tailwind.config.ts": {
+      "path": "tailwind.config.ts",
+      "lang": "ts",
+      "loc": 20,
+      "hash": "8880e4796c3e98b43dc5ff31b58960cf23324c0c46fba345f985c98f34dc126d",
+      "symbols": [
+        {
+          "id": "tailwind.config.ts#const:config:3",
+          "name": "config",
+          "kind": "const",
+          "file": "tailwind.config.ts",
+          "line": 3,
+          "col": 7,
+          "exported": false
+        }
+      ],
+      "imports": [
+        {
+          "from": "tailwind.config.ts",
+          "source": "tailwindcss",
+          "names": [
+            "Config"
+          ],
+          "line": 1
+        }
+      ]
+    },
+    "docs/api.md": {
+      "path": "docs/api.md",
+      "lang": "md",
+      "loc": 343,
+      "hash": "ed810dbaacc650e7b21a3a8bad97e1a52a8ab2d2d643445bf536ee4f71ce027f",
+      "symbols": [],
+      "imports": [],
+      "title": "🔌 Kraafto — API Routes & Endpoints",
+      "summary": "---"
+    },
+    "docs/architecture.md": {
+      "path": "docs/architecture.md",
+      "lang": "md",
+      "loc": 299,
+      "hash": "58aa9219fe7b8da3eeea3633287a4781993cd5fc6718c7cafa4dd14e494b7660",
+      "symbols": [],
+      "imports": [],
+      "title": "🏗️ Kraafto — Architecture & Tech Stack",
+      "summary": "---"
+    },
+    "docs/database.md": {
+      "path": "docs/database.md",
+      "lang": "md",
+      "loc": 239,
+      "hash": "1e86ccf3562de25c86548e6263f36d297e0f439209cac3f8ef5dfcc949c6caa7",
+      "symbols": [],
+      "imports": [],
+      "title": "🗄️ Kraafto — Database Schema & Models",
+      "summary": "---"
+    },
+    "docs/deployment.md": {
+      "path": "docs/deployment.md",
+      "lang": "md",
+      "loc": 301,
+      "hash": "08323380e1f5c7ccd4999c430c6323202a7ca355e0e1f3838ef44993440e7a6c",
+      "symbols": [],
+      "imports": [],
+      "title": "🚀 Kraafto — Deployment & Infrastructure",
+      "summary": "---"
+    },
+    "docs/design.md": {
+      "path": "docs/design.md",
+      "lang": "md",
+      "loc": 231,
+      "hash": "a95dc5ba37b559136bb8ff4b388ec9085e2bee1cacf39bfd91bb2b6481161186",
+      "symbols": [],
+      "imports": [],
+      "title": "🎨 Kraafto — Design System & UI/UX Requirements",
+      "summary": "---"
+    },
+    "docs/features.md": {
+      "path": "docs/features.md",
+      "lang": "md",
+      "loc": 231,
+      "hash": "ba867d9d72e5d1ba70a520c47e680f627a6e1bb547ac19708e7f2197e3e648be",
+      "symbols": [],
+      "imports": [],
+      "title": "🎁 Kraafto — Special Features (Gifting Niche)",
+      "summary": "---"
+    },
+    "docs/overview.md": {
+      "path": "docs/overview.md",
+      "lang": "md",
+      "loc": 75,
+      "hash": "feae5925c99f2588b8ac4267eb054a8d53d773b6a41c8160d1b0626bebe86844",
+      "symbols": [],
+      "imports": [],
+      "title": "🎁 Kraafto — Project Overview",
+      "summary": "> **Premium eCommerce Platform for Gifting & Luxury Crafts**"
+    },
+    "docs/pages.md": {
+      "path": "docs/pages.md",
+      "lang": "md",
+      "loc": 291,
+      "hash": "1e7752c56af3c9f3b217421b8a675553d6c899ded06aba80fb098b2f73978947",
+      "symbols": [],
+      "imports": [],
+      "title": "📄 Kraafto — Core Pages & Components",
+      "summary": "---"
+    },
+    "docs/performance.md": {
+      "path": "docs/performance.md",
+      "lang": "md",
+      "loc": 204,
+      "hash": "8674f6ace2320b5d830fb0e9cb4dfbed5a8670cffd8079c6fffa60261ed4ec2a",
+      "symbols": [],
+      "imports": [],
+      "title": "⚡ Kraafto — Performance Optimization",
+      "summary": "---"
+    },
+    "docs/security.md": {
+      "path": "docs/security.md",
+      "lang": "md",
+      "loc": 241,
+      "hash": "6c5ef9cf84b2651600beb657cb8dc619f55ddd0331a9df978530849ce2e2962c",
+      "symbols": [],
+      "imports": [],
+      "title": "🔒 Kraafto — Security & Data Protection",
+      "summary": "---"
+    },
+    "docs/seo.md": {
+      "path": "docs/seo.md",
+      "lang": "md",
+      "loc": 198,
+      "hash": "3d027f4b3bbd05d83cd6ae689c5ca2587bd499c66a6a3eff1087202e307891e9",
+      "symbols": [],
+      "imports": [],
+      "title": "🔍 Kraafto — SEO & Marketing Strategy",
+      "summary": "---"
+    },
+    "src/app/layout.tsx": {
+      "path": "src/app/layout.tsx",
+      "lang": "tsx",
+      "loc": 36,
+      "hash": "c21ba97aa692418557c5c529fd8add83918cab60e8b2ea3bc134af2202376c69",
+      "symbols": [
+        {
+          "id": "src/app/layout.tsx#const:geistSans:5",
+          "name": "geistSans",
+          "kind": "const",
+          "file": "src/app/layout.tsx",
+          "line": 5,
+          "col": 7,
+          "exported": false
+        },
+        {
+          "id": "src/app/layout.tsx#const:geistMono:10",
+          "name": "geistMono",
+          "kind": "const",
+          "file": "src/app/layout.tsx",
+          "line": 10,
+          "col": 7,
+          "exported": false
+        },
+        {
+          "id": "src/app/layout.tsx#const:metadata:16",
+          "name": "metadata",
+          "kind": "const",
+          "file": "src/app/layout.tsx",
+          "line": 16,
+          "col": 14,
+          "exported": true
+        },
+        {
+          "id": "src/app/layout.tsx#function:RootLayout:21",
+          "name": "RootLayout",
+          "kind": "function",
+          "file": "src/app/layout.tsx",
+          "line": 21,
+          "col": 16,
+          "exported": true
+        }
+      ],
+      "imports": [
+        {
+          "from": "src/app/layout.tsx",
+          "source": "next",
+          "names": [
+            "Metadata"
+          ],
+          "line": 1
+        },
+        {
+          "from": "src/app/layout.tsx",
+          "source": "next/font/local",
+          "names": [
+            "localFont"
+          ],
+          "line": 2
+        },
+        {
+          "from": "src/app/layout.tsx",
+          "source": "./globals.css",
+          "names": [],
+          "line": 3
+        }
+      ]
+    },
+    "src/app/page.tsx": {
+      "path": "src/app/page.tsx",
+      "lang": "tsx",
+      "loc": 102,
+      "hash": "dc71118769433bf23cdfbafdd563bd8768666719d6fae6a361b9d94941b9839c",
+      "symbols": [
+        {
+          "id": "src/app/page.tsx#function:Home:3",
+          "name": "Home",
+          "kind": "function",
+          "file": "src/app/page.tsx",
+          "line": 3,
+          "col": 16,
+          "exported": true
+        }
+      ],
+      "imports": [
+        {
+          "from": "src/app/page.tsx",
+          "source": "next/image",
+          "names": [
+            "Image"
+          ],
+          "line": 1
+        }
+      ]
+    }
+  },
+  "imports_in": {
+    "README.md": [],
+    "next.config.mjs": [],
+    "postcss.config.mjs": [],
+    "prisma.config.ts": [],
+    "tailwind.config.ts": [],
+    "docs/api.md": [],
+    "docs/architecture.md": [],
+    "docs/database.md": [],
+    "docs/deployment.md": [],
+    "docs/design.md": [],
+    "docs/features.md": [],
+    "docs/overview.md": [],
+    "docs/pages.md": [],
+    "docs/performance.md": [],
+    "docs/security.md": [],
+    "docs/seo.md": [],
+    "src/app/layout.tsx": [],
+    "src/app/page.tsx": []
+  },
+  "imports_out": {
+    "README.md": [],
+    "next.config.mjs": [],
+    "postcss.config.mjs": [],
+    "prisma.config.ts": [],
+    "tailwind.config.ts": [],
+    "docs/api.md": [],
+    "docs/architecture.md": [],
+    "docs/database.md": [],
+    "docs/deployment.md": [],
+    "docs/design.md": [],
+    "docs/features.md": [],
+    "docs/overview.md": [],
+    "docs/pages.md": [],
+    "docs/performance.md": [],
+    "docs/security.md": [],
+    "docs/seo.md": [],
+    "src/app/layout.tsx": [],
+    "src/app/page.tsx": []
+  },
+  "entrypoints": [],
+  "hubs": []
+}

@@ -1,0 +1,74 @@
+{
+  "README.md": {
+    "hash": "60b55ff7df79af72590f9524208e46642bc32bdc175cdad41349681c0e2f958f",
+    "loc": 37
+  },
+  "next.config.mjs": {
+    "hash": "1e3206cb200e264fdddb4dbb2e4772daebc839fdbc94b78316d74892a0de6fa2",
+    "loc": 5
+  },
+  "postcss.config.mjs": {
+    "hash": "ac31e2a95ef64fe27ceb4124e101675273107aae2e33bc490b01d919e7f03646",
+    "loc": 9
+  },
+  "prisma.config.ts": {
+    "hash": "c1bcbd0ff267c8b6885cd467ed8122cf6508bdac6c929d69f9b512ccde65a033",
+    "loc": 15
+  },
+  "tailwind.config.ts": {
+    "hash": "8880e4796c3e98b43dc5ff31b58960cf23324c0c46fba345f985c98f34dc126d",
+    "loc": 20
+  },
+  "docs/api.md": {
+    "hash": "ed810dbaacc650e7b21a3a8bad97e1a52a8ab2d2d643445bf536ee4f71ce027f",
+    "loc": 343
+  },
+  "docs/architecture.md": {
+    "hash": "58aa9219fe7b8da3eeea3633287a4781993cd5fc6718c7cafa4dd14e494b7660",
+    "loc": 299
+  },
+  "docs/database.md": {
+    "hash": "1e86ccf3562de25c86548e6263f36d297e0f439209cac3f8ef5dfcc949c6caa7",
+    "loc": 239
+  },
+  "docs/deployment.md": {
+    "hash": "08323380e1f5c7ccd4999c430c6323202a7ca355e0e1f3838ef44993440e7a6c",
+    "loc": 301
+  },
+  "docs/design.md": {
+    "hash": "a95dc5ba37b559136bb8ff4b388ec9085e2bee1cacf39bfd91bb2b6481161186",
+    "loc": 231
+  },
+  "docs/features.md": {
+    "hash": "ba867d9d72e5d1ba70a520c47e680f627a6e1bb547ac19708e7f2197e3e648be",
+    "loc": 231
+  },
+  "docs/overview.md": {
+    "hash": "feae5925c99f2588b8ac4267eb054a8d53d773b6a41c8160d1b0626bebe86844",
+    "loc": 75
+  },
+  "docs/pages.md": {
+    "hash": "1e7752c56af3c9f3b217421b8a675553d6c899ded06aba80fb098b2f73978947",
+    "loc": 291
+  },
+  "docs/performance.md": {
+    "hash": "8674f6ace2320b5d830fb0e9cb4dfbed5a8670cffd8079c6fffa60261ed4ec2a",
+    "loc": 204
+  },
+  "docs/security.md": {
+    "hash": "6c5ef9cf84b2651600beb657cb8dc619f55ddd0331a9df978530849ce2e2962c",
+    "loc": 241
+  },
+  "docs/seo.md": {
+    "hash": "3d027f4b3bbd05d83cd6ae689c5ca2587bd499c66a6a3eff1087202e307891e9",
+    "loc": 198
+  },
+  "src/app/layout.tsx": {
+    "hash": "c21ba97aa692418557c5c529fd8add83918cab60e8b2ea3bc134af2202376c69",
+    "loc": 36
+  },
+  "src/app/page.tsx": {
+    "hash": "dc71118769433bf23cdfbafdd563bd8768666719d6fae6a361b9d94941b9839c",
+    "loc": 102
+  }
+}

@@ -1,11 +1,12 @@
+export const dynamic = 'force-dynamic';
+
 import React from 'react';
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 
 export default async function CollectionsIndexPage() {
-  const categories = await prisma.category.findMany({
-    where: { isActive: true },
-  });
+  const categories = await prisma.category.findMany();
+
 
   return (
     <div className="pt-32 pb-20 min-h-screen">

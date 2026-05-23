@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import React from 'react';
 import Link from 'next/link';
 import { ProductGrid } from '@/components/product/ProductGrid';
@@ -9,7 +11,7 @@ export default async function CollectionPage({ params }: { params: { slug: strin
 
   const [category, allCategories, products] = await Promise.all([
     prisma.category.findUnique({ where: { slug } }),
-    prisma.category.findMany({ where: { isActive: true } }),
+    prisma.category.findMany(),
     prisma.product.findMany({
       where: { categories: { some: { slug } }, status: 'ACTIVE', deletedAt: null },
       take: 24,

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import React from 'react';
 import { ProductCard } from '@/components/ui/ProductCard';
 import { getServerSession } from 'next-auth';

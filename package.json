@@ -6,7 +6,7 @@
     "dev": "next dev",
     "dev:admin": "NEXTAUTH_URL=http://localhost:3001 next dev -p 3001",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev:admin\"",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",

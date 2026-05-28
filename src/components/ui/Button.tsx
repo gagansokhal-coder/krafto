@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'luxury';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   children: React.ReactNode;
@@ -19,21 +19,23 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center font-body font-medium transition-all duration-[250ms] rounded-sm focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-obsidian disabled:opacity-50 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center font-body font-medium transition-all duration-[400ms] rounded-sm focus:outline-none focus:ring-2 focus:ring-gold/60 focus:ring-offset-2 focus:ring-offset-obsidian disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variants = {
     primary:
-      'bg-gradient-to-r from-gold to-gold-dark text-obsidian shadow-sm hover:shadow-[0_4px_20px_rgba(201,169,110,0.3)] hover:-translate-y-0.5',
+      'bg-gradient-to-r from-gold to-gold-dark text-obsidian shadow-gold hover:shadow-gold-lg hover:-translate-y-0.5 border border-transparent',
     secondary:
-      'bg-transparent border border-gold text-gold hover:bg-gold hover:text-obsidian',
+      'bg-transparent border border-gold/40 text-gold hover:bg-gold hover:text-obsidian hover:border-gold hover:shadow-gold',
     ghost:
-      'bg-transparent text-ivory hover:text-gold hover:underline underline-offset-4',
+      'bg-transparent text-ivory/80 hover:text-gold relative after:content-[""] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-300 hover:after:w-full',
+    luxury:
+      'bg-obsidian/40 backdrop-blur-sm border border-gold/30 text-gold hover:bg-gold/10 hover:border-gold/60 shadow-warm hover:shadow-gold-glow',
   };
 
   const sizes = {
-    sm: 'text-sm px-4 py-2',
-    md: 'text-base px-6 py-3',
-    lg: 'text-lg px-8 py-4',
+    sm: 'text-[13px] px-5 py-2 uppercase tracking-wider',
+    md: 'text-sm px-7 py-3 uppercase tracking-wider',
+    lg: 'text-[15px] px-10 py-4 uppercase tracking-[0.15em]',
   };
 
   const classes = [

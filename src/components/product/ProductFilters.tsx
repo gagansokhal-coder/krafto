@@ -34,24 +34,27 @@ export function ProductFilters({ filters, onChange, categories }: ProductFilters
   const categoryList = [{ name: 'All', slug: 'All' }, ...categories];
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-10">
       {/* Categories */}
       <div>
-        <h3 className="font-display text-lg text-gold mb-4 pb-2 border-b border-white/10">
-          Categories
-        </h3>
-        <ul className="flex flex-col gap-3 font-body text-sm">
+        <div className="flex items-center gap-3 mb-5 pb-3 border-b border-gold/15">
+          <h3 className="font-display text-lg text-gold tracking-wide">
+            Categories
+          </h3>
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gold/10" />
+        </div>
+        <ul className="flex flex-col gap-3.5 font-body text-[14px]">
           {categoryList.map((c) => (
             <li key={c.name}>
               <button
                 onClick={() => set('category', c.name)}
-                className={`flex items-center gap-2.5 w-full text-left transition-colors ${
-                  filters.category === c.name ? 'text-gold' : 'text-ivory/70 hover:text-gold'
+                className={`flex items-center gap-3 w-full text-left transition-colors duration-300 ${
+                  filters.category === c.name ? 'text-gold' : 'text-ivory/60 hover:text-gold'
                 }`}
               >
                 <span
-                  className={`w-4 h-4 rounded-sm border flex items-center justify-center transition-colors ${
-                    filters.category === c.name ? 'bg-gold border-gold' : 'border-white/20'
+                  className={`w-4 h-4 rounded-sm border flex items-center justify-center transition-all duration-300 ${
+                    filters.category === c.name ? 'bg-gold border-gold shadow-[0_0_10px_rgba(200,150,60,0.3)]' : 'border-gold/30'
                   }`}
                 >
                   {filters.category === c.name && (
@@ -74,23 +77,30 @@ export function ProductFilters({ filters, onChange, categories }: ProductFilters
 
       {/* Price Range */}
       <div>
-        <h3 className="font-display text-lg text-gold mb-4 pb-2 border-b border-white/10">
-          Price Range
-        </h3>
-        <ul className="flex flex-col gap-3 font-body text-sm">
+        <div className="flex items-center gap-3 mb-5 pb-3 border-b border-gold/15">
+          <h3 className="font-display text-lg text-gold tracking-wide">
+            Price Range
+          </h3>
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gold/10" />
+        </div>
+        <ul className="flex flex-col gap-3.5 font-body text-[14px]">
           {PRICE_RANGES.map((r, i) => (
             <li key={r.label}>
               <button
                 onClick={() => set('priceRange', i)}
-                className={`flex items-center gap-2.5 w-full text-left transition-colors ${
-                  filters.priceRange === i ? 'text-gold' : 'text-ivory/70 hover:text-gold'
+                className={`flex items-center gap-3 w-full text-left transition-colors duration-300 ${
+                  filters.priceRange === i ? 'text-gold' : 'text-ivory/60 hover:text-gold'
                 }`}
               >
                 <span
-                  className={`w-4 h-4 rounded-full border transition-colors ${
-                    filters.priceRange === i ? 'bg-gold border-gold' : 'border-white/20'
+                  className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                    filters.priceRange === i ? 'border-gold' : 'border-gold/30'
                   }`}
-                />
+                >
+                  {filters.priceRange === i && (
+                    <span className="w-2 h-2 rounded-full bg-gold shadow-[0_0_8px_rgba(200,150,60,0.5)]" />
+                  )}
+                </span>
                 {r.label}
               </button>
             </li>
@@ -100,19 +110,22 @@ export function ProductFilters({ filters, onChange, categories }: ProductFilters
 
       {/* In Stock toggle */}
       <div>
-        <h3 className="font-display text-lg text-gold mb-4 pb-2 border-b border-white/10">
-          Availability
-        </h3>
-        <label className="flex items-center gap-3 cursor-pointer font-body text-sm text-ivory/70 hover:text-ivory transition-colors">
+        <div className="flex items-center gap-3 mb-5 pb-3 border-b border-gold/15">
+          <h3 className="font-display text-lg text-gold tracking-wide">
+            Availability
+          </h3>
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gold/10" />
+        </div>
+        <label className="flex items-center gap-3.5 cursor-pointer font-body text-[14px] text-ivory/60 hover:text-ivory transition-colors duration-300">
           <div
             onClick={() => set('inStock', !filters.inStock)}
-            className={`relative w-10 h-5 rounded-full transition-colors ${
-              filters.inStock ? 'bg-gold' : 'bg-white/10'
+            className={`relative w-10 h-[22px] rounded-full transition-colors duration-400 border ${
+              filters.inStock ? 'bg-gold border-gold' : 'bg-obsidian border-gold/30'
             }`}
           >
             <span
-              className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-ivory transition-transform ${
-                filters.inStock ? 'translate-x-5' : 'translate-x-0'
+              className={`absolute top-0.5 left-0.5 w-[16px] h-[16px] rounded-full transition-transform duration-400 shadow-sm ${
+                filters.inStock ? 'translate-x-[18px] bg-obsidian' : 'translate-x-0 bg-gold/50'
               }`}
             />
           </div>
@@ -121,14 +134,21 @@ export function ProductFilters({ filters, onChange, categories }: ProductFilters
       </div>
 
       {/* Clear filters */}
-      {hasActiveFilters && (
-        <button
-          onClick={() => onChange({ category: 'All', priceRange: 0, sort: filters.sort, inStock: false })}
-          className="text-sm text-ivory/40 hover:text-gold font-body underline underline-offset-4 transition-colors text-left"
-        >
-          Clear All Filters
-        </button>
-      )}
+      <div className="pt-2">
+        {hasActiveFilters ? (
+          <button
+            onClick={() => onChange({ category: 'All', priceRange: 0, sort: filters.sort, inStock: false })}
+            className="text-[13px] text-ivory/50 hover:text-gold font-body uppercase tracking-[0.15em] font-medium transition-colors duration-300 flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            Clear Filters
+          </button>
+        ) : (
+          <div className="h-6" /> // Placeholder to maintain height
+        )}
+      </div>
     </div>
   );
 }

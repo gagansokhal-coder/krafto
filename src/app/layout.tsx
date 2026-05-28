@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Cormorant_Garamond } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -7,12 +7,6 @@ import { CartProvider } from "@/context/CartContext";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { ToastProvider } from "@/components/ui/Toast";
 import { Providers } from "@/components/layout/Providers";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,7 +17,7 @@ const inter = Inter({
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-cormorant",
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -33,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Kraafto",
   },
   description:
-    "Discover premium handcrafted luxury gifts. Kraafto curates artisan-made home décor, apparel, and gifting collections crafted for the discerning.",
+    "Discover premium handcrafted luxury gifts. Kraafto curates artisan-made home décor, apparel, and gifting collections — forged in tradition, crafted for today.",
   openGraph: {
     siteName: "Kraafto",
     type: "website",
@@ -45,7 +39,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body
         className={`font-body antialiased bg-obsidian text-ivory min-h-screen flex flex-col`}
         suppressHydrationWarning

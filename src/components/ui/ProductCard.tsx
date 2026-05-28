@@ -61,11 +61,11 @@ export function ProductCard({
   }
 
   return (
-    <div className="group relative w-full flex flex-col bg-charcoal rounded-sm overflow-hidden transition-all duration-[250ms] hover:shadow-lg hover:shadow-black/20">
+    <div className="group relative w-full flex flex-col bg-charcoal rounded-sm overflow-hidden transition-all duration-[400ms] hover:shadow-warm-lg border border-transparent hover:border-gold/10">
       <Link href={href} className="relative block aspect-[4/5] overflow-hidden">
         {/* Badges */}
         {displayBadges.length > 0 && (
-          <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
+          <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
             {displayBadges.map((badge) => (
               <Badge key={badge} label={badge} />
             ))}
@@ -76,15 +76,19 @@ export function ProductCard({
         <button
           onClick={handleWishlist}
           aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
-          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-obsidian/40 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all duration-[250ms] hover:bg-obsidian/80"
+          className={`absolute top-4 right-4 z-10 w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-[400ms] ${
+            wishlisted 
+              ? 'bg-obsidian/80 backdrop-blur-md border-terracotta/30 shadow-[0_0_15px_rgba(139,58,42,0.2)]' 
+              : 'bg-obsidian/40 backdrop-blur-md border-white/10 hover:bg-obsidian/80 hover:border-gold/30'
+          }`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className={`w-4 h-4 transition-all duration-[250ms] ${
-              wishlisted ? 'fill-blush text-blush scale-110' : 'fill-none text-ivory hover:text-blush'
+            className={`w-[18px] h-[18px] transition-all duration-[400ms] ${
+              wishlisted ? 'fill-terracotta text-terracotta scale-110' : 'fill-none text-ivory hover:text-terracotta'
             }`}
           >
             <path
@@ -101,17 +105,17 @@ export function ProductCard({
           alt={name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover transition-transform duration-[400ms] ease-out group-hover:scale-105"
+          className="object-cover transition-transform duration-[700ms] ease-out group-hover:scale-105"
         />
 
         {/* Gradient overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[250ms]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms]" />
 
         {/* Quick Add button */}
-        <div className="absolute bottom-4 left-4 right-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[250ms] z-20">
+        <div className="absolute bottom-5 left-5 right-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-[400ms] z-20">
           <button
             onClick={handleQuickAdd}
-            className="w-full bg-ivory text-obsidian py-2.5 font-body font-medium text-sm rounded-sm hover:bg-gold transition-colors"
+            className="w-full bg-ivory/95 backdrop-blur-sm text-obsidian py-3 uppercase tracking-wider font-body font-medium text-[13px] rounded-sm hover:bg-gold hover:text-obsidian transition-colors shadow-lg"
           >
             Quick Add
           </button>
@@ -119,23 +123,26 @@ export function ProductCard({
       </Link>
 
       {/* Product Info */}
-      <div className="p-4 flex flex-col gap-1.5">
+      <div className="p-5 flex flex-col gap-2 relative">
         <Link
           href={href}
-          className="font-display text-base text-ivory hover:text-gold transition-colors line-clamp-1 leading-snug"
+          className="font-display text-[17px] text-ivory hover:text-gold transition-colors line-clamp-1 leading-snug tracking-wide"
         >
           {name}
         </Link>
-        <div className="flex items-center gap-2">
-          <span className="font-body font-medium text-gold">
+        <div className="flex items-center gap-3">
+          <span className="font-body font-medium text-gold tracking-wide">
             ₹{price.toLocaleString('en-IN')}
           </span>
           {isSale && (
-            <span className="font-body text-sm text-smoke line-through">
+            <span className="font-body text-[13px] text-ivory/40 line-through">
               ₹{originalPrice.toLocaleString('en-IN')}
             </span>
           )}
         </div>
+
+        {/* Premium border reveal on hover */}
+        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-gold to-brass group-hover:w-full transition-all duration-500 ease-out" />
       </div>
     </div>
   );

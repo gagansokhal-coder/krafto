@@ -50,25 +50,28 @@ export function Modal({
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-obsidian/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-obsidian/85 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Panel */}
       <div
-        className={`relative w-full ${maxWidth} bg-charcoal border border-white/10 rounded-sm shadow-2xl animate-fade-in-up`}
+        className={`relative w-full ${maxWidth} bg-charcoal border border-gold/15 rounded-sm shadow-warm-lg animate-fade-in-up overflow-hidden`}
       >
+        {/* Decorative top gold border */}
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-gold via-brass to-gold" />
+        
         {/* Header */}
         {title && (
-          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-            <h2 id="modal-title" className="font-display text-xl text-ivory">
+          <div className="flex items-center justify-between px-8 py-6 border-b border-gold/10">
+            <h2 id="modal-title" className="font-display text-2xl text-ivory/90 tracking-wide">
               {title}
             </h2>
             <button
               onClick={onClose}
               aria-label="Close modal"
-              className="text-ivory/60 hover:text-gold transition-colors p-1"
+              className="text-ivory/40 hover:text-gold transition-colors duration-300 p-2 -mr-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +88,7 @@ export function Modal({
         )}
 
         {/* Body */}
-        <div className="px-6 py-6">{children}</div>
+        <div className="px-8 py-8">{children}</div>
       </div>
     </div>
   );

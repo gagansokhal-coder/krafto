@@ -4,20 +4,24 @@
 
 @layer base {
   :root {
-    --background: #FAF6F0;
-    --foreground: #1A1A2E;
+    --background: #F5EDD8;
+    --foreground: #1A1208;
 
-    --gradient-hero: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
-    --gradient-gold: linear-gradient(135deg, #C9A96E 0%, #E8D5B7 50%, #C9A96E 100%);
-    --gradient-overlay: linear-gradient(180deg, rgba(26,26,46,0) 0%, rgba(26,26,46,0.85) 100%);
-    --gradient-cta: linear-gradient(135deg, #C9A96E 0%, #B8956A 100%);
+    /* ── Brand Gradients ── */
+    --gradient-hero: linear-gradient(135deg, #1A1208 0%, #2A1F10 40%, #1A1208 100%);
+    --gradient-gold: linear-gradient(135deg, #C8963C 0%, #E8B84B 50%, #C8963C 100%);
+    --gradient-overlay: linear-gradient(180deg, rgba(26,18,8,0) 0%, rgba(26,18,8,0.9) 100%);
+    --gradient-cta: linear-gradient(135deg, #C8963C 0%, #B07D2A 100%);
 
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
-    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 6px 10px rgba(0,0,0,0.08);
-    --shadow-xl: 0 20px 50px rgba(0,0,0,0.15), 0 10px 20px rgba(0,0,0,0.1);
-    --shadow-gold: 0 4px 20px rgba(201, 169, 110, 0.3);
+    /* ── Elevation / Shadows ── */
+    --shadow-sm: 0 1px 3px rgba(26,18,8,0.12), 0 1px 2px rgba(26,18,8,0.08);
+    --shadow-md: 0 4px 12px rgba(26,18,8,0.12), 0 2px 4px rgba(26,18,8,0.08);
+    --shadow-lg: 0 12px 30px rgba(26,18,8,0.15), 0 6px 12px rgba(26,18,8,0.1);
+    --shadow-xl: 0 24px 60px rgba(26,18,8,0.2), 0 12px 24px rgba(26,18,8,0.12);
+    --shadow-gold: 0 4px 20px rgba(200, 150, 60, 0.25);
+    --shadow-gold-glow: 0 0 30px rgba(200, 150, 60, 0.2), 0 0 60px rgba(200, 150, 60, 0.1);
 
+    /* ── Motion ── */
     --duration-fast: 150ms;
     --duration-normal: 250ms;
     --duration-slow: 400ms;
@@ -25,6 +29,7 @@
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   /* Respect reduced motion */
@@ -36,50 +41,170 @@
     }
   }
 
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply font-body bg-obsidian text-ivory antialiased selection:bg-gold selection:text-obsidian;
+    @apply font-body bg-obsidian text-ivory antialiased;
+    selection {
+      @apply bg-gold text-obsidian;
+    }
+  }
+
+  ::selection {
+    background-color: #C8963C;
+    color: #1A1208;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
   }
 
-  /* Focus ring for keyboard navigation */
+  /* Premium focus ring */
   :focus-visible {
-    @apply outline-none ring-2 ring-gold ring-offset-2 ring-offset-obsidian;
+    @apply outline-none ring-2 ring-gold/60 ring-offset-2 ring-offset-obsidian;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1A1208;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #4A4540;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C8963C;
   }
 }
 
 @layer components {
-  /* Glass morphism utilities */
+  /* ── Glass Morphism (Warm) ── */
   .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+    @apply bg-ivory/5 backdrop-blur-md border border-ivory/10;
   }
 
   .glass-dark {
-    @apply bg-obsidian/60 backdrop-blur-lg border border-white/5;
+    @apply bg-obsidian/60 backdrop-blur-lg border border-ivory/5;
   }
 
-  /* Shimmer loading effect */
+  .glass-gold {
+    background: rgba(200, 150, 60, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(200, 150, 60, 0.15);
+  }
+
+  /* ── Shimmer Loading ── */
   .shimmer {
     background: linear-gradient(
       90deg,
-      rgba(255,255,255,0.03) 25%,
-      rgba(255,255,255,0.08) 50%,
-      rgba(255,255,255,0.03) 75%
+      rgba(200,150,60,0.03) 25%,
+      rgba(200,150,60,0.08) 50%,
+      rgba(200,150,60,0.03) 75%
     );
     background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
+    animation: shimmer 2s ease-in-out infinite;
   }
 
-  /* Gold divider */
+  /* ── Gold Dividers ── */
   .divider-gold {
     @apply w-16 h-px bg-gold rounded-full;
   }
 
-  /* Section container */
+  .divider-gold-wide {
+    @apply w-24 h-[2px] rounded-full;
+    background: linear-gradient(90deg, transparent, #C8963C, transparent);
+  }
+
+  /* ── Diamond Separator ── */
+  .diamond-divider {
+    @apply flex items-center gap-4 justify-center;
+  }
+  .diamond-divider::before,
+  .diamond-divider::after {
+    content: '';
+    @apply h-px flex-1 max-w-[80px];
+    background: linear-gradient(90deg, transparent, #C8963C);
+  }
+  .diamond-divider::after {
+    background: linear-gradient(90deg, #C8963C, transparent);
+  }
+
+  /* ── Gold Text Gradient ── */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #E8B84B, #C8963C, #E8D5A0, #C8963C);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textShimmer 4s ease-in-out infinite;
+  }
+
+  /* ── Jaali Pattern (subtle mesh overlay) ── */
+  .jaali-pattern {
+    position: relative;
+  }
+  .jaali-pattern::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: 
+      linear-gradient(45deg, #C8963C 25%, transparent 25%),
+      linear-gradient(-45deg, #C8963C 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #C8963C 75%),
+      linear-gradient(-45deg, transparent 75%, #C8963C 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  }
+
+  /* ── Section Container ── */
   .section-container {
     @apply max-w-7xl mx-auto px-4 md:px-8;
+  }
+
+  /* ── Premium Border Bottom (gold reveal on hover) ── */
+  .border-gold-reveal {
+    position: relative;
+  }
+  .border-gold-reveal::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #C8963C, #E8B84B);
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .border-gold-reveal:hover::after {
+    width: 100%;
+  }
+
+  /* ── Gold Glow Button Effect ── */
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #C8963C, #E8B84B, #C8963C);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    filter: blur(12px);
+  }
+  .btn-glow:hover::before {
+    opacity: 0.4;
   }
 }
 
@@ -91,7 +216,7 @@
   /* Animate only when in view (used with JS intersection observer) */
   .animate-on-scroll {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
     transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
   }
 
@@ -99,4 +224,13 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Stagger delay utilities */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-800 { animation-delay: 800ms; }
 }

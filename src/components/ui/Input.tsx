@@ -11,9 +11,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const inputId = id ?? label?.toLowerCase().replace(/\s+/g, '-');
 
     return (
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-2">
         {label && (
-          <label htmlFor={inputId} className="text-sm text-ivory/70 font-body">
+          <label htmlFor={inputId} className="text-[13px] text-ivory/60 font-body uppercase tracking-wider font-medium">
             {label}
             {props.required && <span className="text-gold ml-1">*</span>}
           </label>
@@ -22,9 +22,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={[
-            'w-full bg-charcoal border rounded-sm px-4 py-3 text-ivory placeholder-ivory/30',
-            'focus:outline-none focus:ring-2 focus:ring-gold/50 transition-colors font-body text-sm',
-            error ? 'border-red-500/60' : 'border-white/20 focus:border-gold',
+            'w-full bg-obsidian/80 border rounded-sm px-4 py-3.5 text-ivory placeholder:text-ivory/25',
+            'focus:outline-none focus:ring-1 focus:ring-gold/30 focus:shadow-[0_0_15px_rgba(200,150,60,0.05)] transition-all duration-300 font-body text-[15px]',
+            error ? 'border-terracotta/60' : 'border-gold/15 focus:border-gold/60',
             props.disabled ? 'opacity-50 cursor-not-allowed' : '',
             className,
           ]
@@ -32,8 +32,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             .join(' ')}
           {...props}
         />
-        {error && <p className="text-xs text-red-400 font-body">{error}</p>}
-        {hint && !error && <p className="text-xs text-ivory/40 font-body">{hint}</p>}
+        {error && <p className="text-xs text-terracotta font-body tracking-wide mt-1">{error}</p>}
+        {hint && !error && <p className="text-xs text-ivory/40 font-body tracking-wide mt-1">{hint}</p>}
       </div>
     );
   }

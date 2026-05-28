@@ -17,14 +17,14 @@ interface BadgeProps {
 }
 
 const VARIANT_STYLES: Record<BadgeVariant, string> = {
-  'limited-edition': 'bg-burgundy text-ivory border-burgundy',
-  'best-seller': 'bg-gold text-obsidian border-gold',
-  'handcrafted': 'bg-transparent text-gold border-gold',
-  'eco-friendly': 'bg-sage/20 text-sage border-sage/40',
-  'new-arrival': 'bg-sage/20 text-sage border-sage/40',
-  'sale': 'bg-blush/20 text-blush border-blush/40',
-  'premium': 'bg-gold/20 text-gold border-gold/40',
-  'default': 'bg-white/10 text-ivory border-white/20',
+  'limited-edition': 'bg-terracotta text-ivory border-terracotta/80 shadow-[0_2px_8px_rgba(139,58,42,0.3)]',
+  'best-seller': 'bg-gold text-obsidian border-gold/80 shadow-[0_2px_8px_rgba(200,150,60,0.3)]',
+  'handcrafted': 'bg-charcoal/80 backdrop-blur-md text-gold border-gold/40',
+  'eco-friendly': 'bg-sage/15 backdrop-blur-md text-sage border-sage/30',
+  'new-arrival': 'bg-brass/15 backdrop-blur-md text-brass border-brass/30',
+  'sale': 'bg-terracotta/15 backdrop-blur-md text-terracotta border-terracotta/30',
+  'premium': 'bg-gradient-to-r from-gold to-brass text-obsidian border-transparent shadow-[0_0_15px_rgba(200,150,60,0.4)]',
+  'default': 'bg-obsidian/60 backdrop-blur-md text-ivory/80 border-ivory/15',
 };
 
 function labelToVariant(label: string): BadgeVariant {
@@ -46,7 +46,7 @@ export function Badge({ label, variant, className = '' }: BadgeProps) {
 
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider border rounded-sm font-body ${styles} ${className}`}
+      className={`inline-flex items-center px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.15em] border rounded-sm font-body ${styles} ${className}`}
     >
       {label}
     </span>

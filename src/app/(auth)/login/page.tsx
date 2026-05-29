@@ -9,12 +9,13 @@ import { Button } from '@/components/ui/Button';
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/account';
+  const defaultCallback = searchParams.get('callbackUrl') || '/account';
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [callbackUrl, setCallbackUrl] = useState(defaultCallback);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -101,12 +102,32 @@ function LoginForm() {
           </div>
         </form>
 
-        {/* Quick Access Hint */}
+        {/* Quick Access — click to auto-fill */}
         <div className="mt-6 p-4 bg-obsidian/50 border border-white/5 rounded-sm">
-          <p className="text-xs text-ivory/40 font-body mb-2 uppercase tracking-wider">Demo Credentials</p>
-          <div className="space-y-1 text-xs font-body text-ivory/60">
-            <p><span className="text-gold">Admin:</span> admin@kraafto.com / Admin@Kraafto2026</p>
-            <p><span className="text-ivory/80">Customer:</span> demo@kraafto.com / Customer@123</p>
+          <p className="text-xs text-ivory/40 font-body mb-3 uppercase tracking-wider">Demo Credentials — click to fill</p>
+          <div className="space-y-2">
+            <button
+              type="button"
+              onClick={() => { setEmail('admin@kraafto.com'); setPassword('Admin@Kraafto2026'); setCallbackUrl('/admin'); }}
+              className="w-full flex items-center justify-between px-3 py-2 rounded-sm bg-gold/5 border border-gold/20 hover:bg-gold/10 hover:border-gold/40 transition-all text-xs font-body group cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-gold/20 flex items-center justify-center text-gold text-[10px] font-bold group-hover:bg-gold/30 transition-colors">A</span>
+                <span className="text-gold">Admin</span>
+              </span>
+              <span className="text-ivory/40 group-hover:text-ivory/60 transition-colors">admin@kraafto.com → /admin</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => { setEmail('demo@kraafto.com'); setPassword('Customer@123'); setCallbackUrl('/account'); }}
+              className="w-full flex items-center justify-between px-3 py-2 rounded-sm bg-white/[0.02] border border-white/10 hover:bg-white/[0.05] hover:border-white/20 transition-all text-xs font-body group cursor-pointer"
+            >
+              <span className="flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-ivory/10 flex items-center justify-center text-ivory/70 text-[10px] font-bold group-hover:bg-ivory/20 transition-colors">C</span>
+                <span className="text-ivory/80">Customer</span>
+              </span>
+              <span className="text-ivory/40 group-hover:text-ivory/60 transition-colors">demo@kraafto.com → /account</span>
+            </button>
           </div>
         </div>
 

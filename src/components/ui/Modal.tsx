@@ -57,7 +57,7 @@ export function Modal({
 
       {/* Panel */}
       <div
-        className={`relative w-full ${maxWidth} bg-charcoal border border-gold/15 rounded-sm shadow-warm-lg animate-fade-in-up overflow-hidden`}
+        className={`relative w-full ${maxWidth} max-h-[90vh] bg-charcoal border border-gold/15 rounded-sm shadow-warm-lg animate-fade-in-up flex flex-col overflow-hidden`}
       >
         {/* Decorative top gold border */}
         <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-gold via-brass to-gold" />
@@ -88,7 +88,7 @@ export function Modal({
         )}
 
         {/* Body */}
-        <div className="px-8 py-8">{children}</div>
+        <div className="px-8 py-8 overflow-y-auto flex-1 min-h-0">{children}</div>
       </div>
     </div>
   );

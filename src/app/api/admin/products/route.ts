@@ -61,7 +61,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, slug, description, price, categoryIds, ...rest } = body;
+    const { name, slug, description, price, categoryIds, images, ...rest } = body;
 
     if (!name || !slug || !description || !price) {
       return NextResponse.json(
@@ -79,17 +79,42 @@ export async function POST(request: Request) {
       );
     }
 
-    const product = await prisma.product.create({
-      data: {
-        name,
-        slug,
-        description,
-        price,
-        ...rest,
-        categories: categoryIds?.length
-          ? { connect: categoryIds.map((id: string) => ({ id })) }
-          : undefined,
-      },
+    // Use a transaction to create product and images together
+    const product = await prisma.$transaction(async (tx) => {
+      const newProduct = await tx.product.create({
+        data: {
+          name,
+          slug,
+          description,
+          price,
+          ...rest,
+          categories: categoryIds?.length
+            ? { connect: categoryIds.map((id: string) => ({ id })) }
+            : undefined,
+        },
+      });
+
+      // Create product images if provided
+      if (images && Array.isArray(images) && images.length > 0) {
+        await tx.productImage.createMany({
+          data: images.map((img: { url: string; alt?: string; isMain?: boolean; position?: number }, idx: number) => ({
+            productId: newProduct.id,
+            url: img.url,
+            alt: img.alt || null,
+            isMain: img.isMain ?? (idx === 0),
+            position: img.position ?? idx,
+          })),
+        });
+      }
+
+      // Return with images included
+      return tx.product.findUnique({
+        where: { id: newProduct.id },
+        include: {
+          images: { orderBy: { position: 'asc' } },
+          categories: true,
+        },
+      });
     });
 
     return NextResponse.json({ product }, { status: 201 });

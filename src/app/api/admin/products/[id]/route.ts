@@ -82,6 +82,7 @@ export async function PATCH(
       categoryIds,
       tagIds,
       occasionIds,
+      images,
     } = body;
 
     // Check if product exists
@@ -157,15 +158,45 @@ export async function PATCH(
       };
     }
 
-    const product = await prisma.product.update({
-      where: { id: params.id },
-      data: updateData,
-      include: {
-        images: true,
-        categories: true,
-        tags: true,
-        occasions: true,
-      },
+    // Use transaction to update product and sync images
+    const product = await prisma.$transaction(async (tx) => {
+      // Update product fields
+      await tx.product.update({
+        where: { id: params.id },
+        data: updateData,
+      });
+
+      // Sync product images if provided
+      if (images !== undefined && Array.isArray(images)) {
+        // Delete existing images
+        await tx.productImage.deleteMany({
+          where: { productId: params.id },
+        });
+
+        // Create new images
+        if (images.length > 0) {
+          await tx.productImage.createMany({
+            data: images.map((img: { url: string; alt?: string; isMain?: boolean; position?: number }, idx: number) => ({
+              productId: params.id,
+              url: img.url,
+              alt: img.alt || null,
+              isMain: img.isMain ?? (idx === 0),
+              position: img.position ?? idx,
+            })),
+          });
+        }
+      }
+
+      // Return updated product with all relations
+      return tx.product.findUnique({
+        where: { id: params.id },
+        include: {
+          images: { orderBy: { position: 'asc' } },
+          categories: true,
+          tags: true,
+          occasions: true,
+        },
+      });
     });
 
     return NextResponse.json({ product });

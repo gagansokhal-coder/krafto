@@ -309,7 +309,7 @@ export function ProductForm({ product, onSuccess, onCancel }: ProductFormProps) 
   ];
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {error && (
         <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm font-body px-4 py-3 rounded-sm">
           {error}
@@ -343,7 +343,7 @@ export function ProductForm({ product, onSuccess, onCancel }: ProductFormProps) 
         <textarea
           name="description"
           required
-          rows={4}
+          rows={3}
           value={form.description}
           onChange={handleChange}
           className="w-full bg-obsidian border border-white/20 rounded-sm px-4 py-3 text-ivory placeholder-ivory/30 focus:outline-none focus:border-gold transition-colors font-body text-sm resize-none"

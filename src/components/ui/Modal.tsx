@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -18,6 +18,8 @@ export function Modal({
   children,
   maxWidth = 'max-w-lg',
 }: ModalProps) {
+  const bodyRef = useRef<HTMLDivElement>(null);
+
   // Lock body scroll when open
   useEffect(() => {
     if (isOpen) {
@@ -28,6 +30,13 @@ export function Modal({
     return () => {
       document.body.style.overflow = '';
     };
+  }, [isOpen]);
+
+  // Scroll body to top when modal opens
+  useEffect(() => {
+    if (isOpen && bodyRef.current) {
+      bodyRef.current.scrollTop = 0;
+    }
   }, [isOpen]);
 
   // Close on Escape key
@@ -43,29 +52,29 @@ export function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto py-8"
       role="dialog"
       aria-modal="true"
       aria-labelledby={title ? 'modal-title' : undefined}
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-obsidian/85 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-obsidian/85 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Panel */}
       <div
-        className={`relative w-full ${maxWidth} max-h-[90vh] bg-charcoal border border-gold/15 rounded-sm shadow-warm-lg animate-fade-in-up flex flex-col overflow-hidden`}
+        className={`relative w-full ${maxWidth} max-h-[calc(100vh-4rem)] bg-charcoal border border-gold/15 rounded-sm shadow-warm-lg animate-fade-in-up flex flex-col overflow-hidden mx-4`}
       >
         {/* Decorative top gold border */}
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-gold via-brass to-gold" />
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-gold via-brass to-gold z-10" />
         
-        {/* Header */}
+        {/* Header — always stays visible */}
         {title && (
-          <div className="flex items-center justify-between px-8 py-6 border-b border-gold/10">
-            <h2 id="modal-title" className="font-display text-2xl text-ivory/90 tracking-wide">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gold/10 shrink-0">
+            <h2 id="modal-title" className="font-display text-xl text-ivory/90 tracking-wide">
               {title}
             </h2>
             <button
@@ -87,8 +96,13 @@ export function Modal({
           </div>
         )}
 
-        {/* Body */}
-        <div className="px-8 py-8 overflow-y-auto flex-1 min-h-0">{children}</div>
+        {/* Body — scrollable */}
+        <div
+          ref={bodyRef}
+          className="px-6 py-6 overflow-y-auto flex-1 min-h-0"
+        >
+          {children}
+        </div>
       </div>
     </div>
   );

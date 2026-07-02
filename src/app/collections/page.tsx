@@ -21,13 +21,12 @@ export default async function CollectionsIndexPage() {
           {categories.map((category) => (
             <Link key={category.slug} href={`/collections/${category.slug}`} className="group block relative overflow-hidden aspect-[4/3] md:aspect-[3/2] bg-charcoal">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              {category.imageUrl && (
-                <img src={category.imageUrl} alt={category.name} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
+              {category.image && (
+                <img src={category.image} alt={category.name} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <h2 className="font-display text-3xl text-gold mb-2 group-hover:text-gold-light transition-colors">{category.name}</h2>
-                <p className="text-ivory/80 font-body">{category.description}</p>
               </div>
             </Link>
           ))}

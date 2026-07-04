@@ -6,9 +6,11 @@ echo "🚀 Starting deployment..."
 # Navigate to project directory
 cd /home/ubuntu/krafto
 
-# Pull latest code
-echo "📥 Pulling latest code from main..."
-git pull origin main
+# Force-sync with remote (overwrites any local changes on server)
+echo "📥 Fetching latest code from main..."
+git fetch origin main
+git reset --hard origin/main
+git clean -fd
 
 # Install dependencies (in case new packages were added)
 echo "📦 Installing dependencies..."

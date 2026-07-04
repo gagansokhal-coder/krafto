@@ -18,4 +18,10 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /home/ubuntu/krafto
+            echo "===== Starting Deployment ====="
+            echo "Pulling latest code..."
+            git fetch origin main
+            git reset --hard origin/main
+            git clean -fd
+            chmod +x deploy.sh
             ./deploy.sh

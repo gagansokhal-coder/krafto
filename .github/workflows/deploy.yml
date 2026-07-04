@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Deploy to EC2
@@ -16,12 +17,44 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          command_timeout: 15m
           script: |
-            cd /home/ubuntu/krafto
+            set -e
             echo "===== Starting Deployment ====="
-            echo "Pulling latest code..."
+
+            cd /home/ubuntu/krafto
+
+            # Force-sync code with remote
+            echo "📥 Fetching latest code..."
             git fetch origin main
             git reset --hard origin/main
             git clean -fd
-            chmod +x deploy.sh
-            ./deploy.sh
+
+            # Install dependencies
+            echo "📦 Installing dependencies..."
+            npm ci --production=false
+
+            # Remove old build output to force fresh build
+            echo "🗑️ Removing old build..."
+            rm -rf .next
+
+            # Build the Next.js app
+            echo "🔨 Building Next.js application..."
+            npm run build
+
+            # Verify build output exists
+            if [ ! -d ".next/static" ]; then
+              echo "❌ ERROR: Build failed - .next/static directory not found!"
+              exit 1
+            fi
+            echo "✅ Build successful - .next/static exists"
+            ls -la .next/static/
+
+            # Stop and delete any existing PM2 process, then start fresh
+            echo "♻️ Restarting application with PM2..."
+            pm2 delete krafto 2>/dev/null || true
+            pm2 start npm --name "krafto" -- start
+            pm2 save
+
+            echo "✅ Deployment complete!"
+            echo "App should be live at http://${{ secrets.EC2_HOST }}"

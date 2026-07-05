@@ -319,7 +319,7 @@ export default function HomeClient({
           <div className="w-full md:w-1/2 relative">
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden bg-charcoal">
               <Image
-                src="https://images.unsplash.com/photo-1517409249764-16d77cffbc1f?q=80&w=1200&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=1200&auto=format&fit=crop"
                 alt="Master artisan at work"
                 fill
                 className="object-cover opacity-75"

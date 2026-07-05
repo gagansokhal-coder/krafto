@@ -13,7 +13,7 @@ git clean -fd
 
 # Install dependencies
 echo "📦 Installing dependencies..."
-npm ci --production=false
+npm ci
 
 # Remove old build and rebuild
 echo "🗑️ Removing old build..."
@@ -31,8 +31,7 @@ echo "✅ Build successful"
 
 # Restart PM2 (delete + start fresh)
 echo "♻️ Restarting application..."
-pm2 delete krafto 2>/dev/null || true
-pm2 start npm --name "krafto" -- start
+pm2 restart kraafto
 pm2 save
 
 echo "✅ Deployment complete!"

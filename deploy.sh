@@ -9,7 +9,7 @@ cd /home/ubuntu/krafto
 echo "📥 Fetching latest code..."
 git fetch origin main
 git reset --hard origin/main
-git clean -fd
+git clean -fd -e .env
 
 # Install dependencies
 echo "📦 Installing dependencies..."

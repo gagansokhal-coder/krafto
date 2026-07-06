@@ -20,6 +20,7 @@ echo "🗑️ Removing old build..."
 rm -rf .next
 
 echo "🔨 Building Next.js application..."
+export NODE_OPTIONS="--max-old-space-size=2048"
 npm run build
 
 # Verify build

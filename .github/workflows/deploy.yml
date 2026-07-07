@@ -24,6 +24,21 @@ jobs:
 
             cd /home/ubuntu/krafto
 
+            # Create swap file if not already present (helps on low-RAM instances)
+            if [ ! -f /swapfile ]; then
+              echo "💾 Creating 2GB swap file..."
+              sudo fallocate -l 2G /swapfile
+              sudo chmod 600 /swapfile
+              sudo mkswap /swapfile
+              sudo swapon /swapfile
+              echo "✅ Swap enabled"
+            else
+              # Ensure swap is active
+              sudo swapon /swapfile 2>/dev/null || true
+            fi
+            echo "Memory status:"
+            free -h
+
             # Force-sync code with remote
             echo "📥 Fetching latest code..."
             git fetch origin main
@@ -38,8 +53,11 @@ jobs:
             echo "🗑️ Removing old build..."
             rm -rf .next
 
-            # Build the Next.js app
+            # Build the Next.js app with increased memory limit
             echo "🔨 Building Next.js application..."
+            export NODE_OPTIONS="--max-old-space-size=1536"
+            export SENTRY_SUPPRESS_TURBOPACK_WARNING=1
+            export NEXT_TELEMETRY_DISABLED=1
             npm run build
 
             # Verify build output exists
